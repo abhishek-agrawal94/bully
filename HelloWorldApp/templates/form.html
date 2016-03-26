@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<html>
+<head>
+ <title>B.E. Project</title>
+<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+<form action = "output/" method="post" autocomplete="off">
+<body background={% static 'background1.jpg' %}>
+{% csrf_token %}
+   	    <div>
+            <h1 align="center">Detection and Prevention of Cyberbullying</h1>
+            </div>
+
+<br>
+
+
+<div class = "main" style="background-color : transparent; color:white; padding:16px;">
+
+
+{% for sent in form  %}
+	{% if sent %}
+	<font face="sans-serif" color="white">
+     <textarea readonly autofocus style="border:solid 1px cyan;background-color : transparent;max-height:100px;min-height:50px;min-width:1320px; resize: none">
+     {{ sent }}
+     </textarea>
+     </font>
+     <br><br>
+     	{% endif %}
+{% endfor %}
+</div>
+
+<div id="text"> </div> 
+<br>
+<input type="text" align="bottom" size="158" name="text" value=""/>
+<input type="submit" name="tweet" value="Submit"/>
+
+
+
+
+
+</form>
+
+</body>
+</html>

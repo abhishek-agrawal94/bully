@@ -1,0 +1,23 @@
+h1 {
+    color:white;
+    font-family: 'Lobster';
+}
+
+
+.fadein {
+    position:relative;
+    height:320px;
+    width:320px;
+}
+
+.fadein img {
+    position:absolute;
+    left:0;
+    top:0;
+}
+.main {
+    width: full;
+    height: 430px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
