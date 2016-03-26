@@ -35,7 +35,7 @@ def form(request):
 			return index(request)
 	else :
 		form=TextForm()
-	print request.POST.get('text')
+	print (request.POST.get('text'))
 	lines = []
 	lines1 = []
 	with open("/home/ubuntu/Desktop/SVM/data_print") as f:
@@ -50,7 +50,7 @@ def form(request):
 
 
 def return_data(request):
-	print "InNow"
+	print ("InNow")
 	clf = sklearn.svm.LinearSVC()
 
 	training_files = sklearn.datasets.load_files("/home/ubuntu/Desktop/SVM/dataset_training")
@@ -62,13 +62,13 @@ def return_data(request):
 	fil.close()
 	f.write(text)
 	f.close()
-	print "Text ",text
+	print ("Text ",text)
 	
 	#print training_files.data
 
 	predict_files = sklearn.datasets.load_files("/home/ubuntu/Desktop/SVM/dataset_prediction")
 
-	print "Predict",predict_files.data
+	print ("Predict",predict_files.data)
 
 	vectorizer = TfidfVectorizer(encoding='utf-8')
 	X_t = vectorizer.fit_transform((open(f).read() for f in training_files.filenames))
@@ -79,11 +79,11 @@ def return_data(request):
 
 	X_p = vectorizer.transform((open(f).read() for f in predict_files.filenames))
 
-	print X_p
+	print (X_p)
 	clf.fit(X_t, training_files.target)
 	y_predicted=""
 	y_predicted = clf.predict(X_p)
-	print "OUT",y_predicted
+	print ("OUT",y_predicted)
 	if y_predicted[0]==0:
 		
 		f1=open("/home/ubuntu/Desktop/SVM_Multi/dataset_prediction/test/test.txt",'w')
@@ -98,7 +98,7 @@ def return_data(request):
 
 		predict_files = sklearn.datasets.load_files("/home/ubuntu/Desktop/SVM_Multi/dataset_prediction")
 
-		print "Predict",predict_files.data
+		print ("Predict",predict_files.data)
 
 		vectorizer = TfidfVectorizer(encoding='utf-8')
 		X_t = vectorizer.fit_transform((open(f).read() for f in training_files.filenames))
@@ -111,7 +111,7 @@ def return_data(request):
 		X_p = vectorizer.transform((open(f).read()
 		for f in predict_files.filenames))
 		y1=OneVsOneClassifier(LinearSVC(random_state=0)).fit(X_t,training_files.target).predict(X_p)
-		print y1
+		print (y1)
 		if y1==0:
 			fil=open("/home/ubuntu/Desktop/SVM/optional_data_print",'a')
 			fil.write(text)
